@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
-
+import Header from './Components/Header'
 function App() {
   return (
     <Fragment>
-      <h1>Cotizador</h1>
+      <Header
+        titulo="Cotizador"/>
     </Fragment>
   );
 }
