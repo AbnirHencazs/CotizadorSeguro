@@ -3,6 +3,7 @@ import Header from './Components/Header';
 import Formulario from './Components/Formulario';
 import Resumen from './Components/Resumen'
 import Resultado from './Components/Resultado'
+import Spinner from './Components/Spinner';
 import styled from '@emotion/styled';
 
 const Contenendor = styled.div`
@@ -25,19 +26,34 @@ function App() {
       plan: ''
     }
   });
+  const [loading, setLoading] = useState(false);
   //destructuramos el objeto Resumen para obtener los datos
   const { datos, cotizacion } = resumen
+
   return (
     <Contenendor>
       <Header
         titulo="Cotizador de seguros"/>
       <ContenedorFormulario>
         <Formulario
-          setResumen={setResumen}/>
+          setResumen={setResumen}
+          setLoading={setLoading}/>
+
+        {
+          loading
+          ? <Spinner/>
+          : null
+        }
+
         <Resumen
           datos={datos}/>
-        <Resultado
-          resultado={cotizacion}/>
+        {
+          !loading
+          ?<Resultado
+            resultado={cotizacion}/>
+          : null
+        }
+        
       </ContenedorFormulario>
     </Contenendor>
   );

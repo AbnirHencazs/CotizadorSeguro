@@ -51,7 +51,7 @@ const FormError = styled.div`
     margin-bottom: 2rem;
 `;
 
-const Formulario = ({ setResumen }) => {
+const Formulario = ({ setResumen, setLoading }) => {
     const [datos, setDatos] = useState({
         marca: '',
         año: '',
@@ -85,10 +85,16 @@ const Formulario = ({ setResumen }) => {
         //Basico aumenta 20% Completo 50%
         resultado = parseFloat( ObtenerPlan(plan) * resultado).toFixed(2)
         //Total
-        setResumen({
-            cotizacion: resultado,
-            datos
-        })
+        setLoading(true)
+        //Simulamos API call
+        setTimeout(() => {
+            setLoading(false)
+            setResumen({
+                cotizacion: resultado,
+                datos
+            })
+        }, 3000)
+        
     }
     return(
         <form
