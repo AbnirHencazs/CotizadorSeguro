@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from './Components/Header';
 import Formulario from './Components/Formulario';
 import Resumen from './Components/Resumen'
+import Resultado from './Components/Resultado'
 import styled from '@emotion/styled';
 
 const Contenendor = styled.div`
@@ -25,7 +26,7 @@ function App() {
     }
   });
   //destructuramos el objeto Resumen para obtener los datos
-  const { datos } = resumen
+  const { datos, cotizacion } = resumen
   return (
     <Contenendor>
       <Header
@@ -35,6 +36,8 @@ function App() {
           setResumen={setResumen}/>
         <Resumen
           datos={datos}/>
+        <Resultado
+          resultado={cotizacion}/>
       </ContenedorFormulario>
     </Contenendor>
   );
