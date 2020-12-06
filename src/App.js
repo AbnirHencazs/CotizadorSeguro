@@ -4,7 +4,7 @@ function App() {
   return (
     <Fragment>
       <Header
-        titulo="Cotizador"/>
+        titulo="Cotizador de seguros"/>
     </Fragment>
   );
 }
