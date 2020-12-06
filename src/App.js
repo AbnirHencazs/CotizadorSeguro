@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from './Components/Header';
 import Formulario from './Components/Formulario';
+import Resumen from './Components/Resumen'
 import styled from '@emotion/styled';
 
 const Contenendor = styled.div`
@@ -15,8 +16,16 @@ const ContenedorFormulario = styled.div`
 
 function App() {
 
-  const [resumen, setResumen] = useState({});
-
+  const [resumen, setResumen] = useState({
+    cotizacion: 0,
+    datos:{
+      marca: '',
+      año: '',
+      plan: ''
+    }
+  });
+  //destructuramos el objeto Resumen para obtener los datos
+  const { datos } = resumen
   return (
     <Contenendor>
       <Header
@@ -24,6 +33,8 @@ function App() {
       <ContenedorFormulario>
         <Formulario
           setResumen={setResumen}/>
+        <Resumen
+          datos={datos}/>
       </ContenedorFormulario>
     </Contenendor>
   );
