@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './Components/Header';
 import Formulario from './Components/Formulario';
 import styled from '@emotion/styled';
@@ -14,12 +14,16 @@ const ContenedorFormulario = styled.div`
 `;
 
 function App() {
+
+  const [resumen, setResumen] = useState({});
+
   return (
     <Contenendor>
       <Header
         titulo="Cotizador de seguros"/>
       <ContenedorFormulario>
-        <Formulario/>
+        <Formulario
+          setResumen={setResumen}/>
       </ContenedorFormulario>
     </Contenendor>
   );
