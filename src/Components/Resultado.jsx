@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { TrasitionGroup, CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const Parrafo = styled.p`
     background-color: rgb(127, 224, 237);
@@ -31,7 +32,16 @@ const Resultado = ({ resultado }) => {
         ? <Parrafo>Elíge marca, año y tipo</Parrafo> 
         :   (
                 <ContenedorResultado>
-                    <TextoResultado>El total es: $ {resultado}</TextoResultado>
+                    <TransitionGroup
+                        component="p"
+                        className="resultado">
+                        <CSSTransition
+                            classNames="resultado"
+                            key={resultado}
+                            timeout={{enter: 500, exit: 500}}>
+                            <TextoResultado>El total es: $ {resultado}</TextoResultado>
+                        </CSSTransition>
+                    </TransitionGroup>
                 </ContenedorResultado>
             )
     )
